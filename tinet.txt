@@ -1,0 +1,3 @@
+tinet reconf -c spec.yaml | sudo sh -x
+
+sudo docker exec -it R1 vtysh
