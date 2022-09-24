@@ -39,8 +39,7 @@ nodes:
   - sysctl: net.ipv6.conf.default.disable_ipv6=0
   - sysctl: net.ipv4.ip_forward=1
 - name: CACHE
-  image: yama_routinator:test1
-  docker_run_extra_args: --entrypoint bash
+  image: nlnetlabs/routinator:latest
   interfaces:
   - { name: net0, type: direct, args: R1#net3 }
 node_configs:
@@ -115,4 +114,4 @@ node_configs:
           -c '!'
   - name: CACHE
     cmds:
-      - cmd: ip addr add 10.3.0.2/24 dev net0     
+      - cmd: ip addr add 10.3.0.2/24 dev net0            
