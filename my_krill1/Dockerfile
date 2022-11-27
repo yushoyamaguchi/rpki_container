@@ -19,7 +19,8 @@ RUN wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | apt-key add -
 RUN apt -y update
 RUN apt -y install krill
 
-COPY ./krill_start1.sh krill_start1.sh
+COPY ./krill_start2.sh krill_start2.sh
+
 
 
 
