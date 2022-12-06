@@ -2,5 +2,7 @@ tinet reconf -c spec.yaml | sudo sh -x
 
 sudo docker exec -it R1 vtysh
 
+sudo docker cp  ./krill_start3.sh krill_con:/krill_start3b.sh
+
 optionつけてdocker runしたいとき
 nodes[].docker_run_extra_args 

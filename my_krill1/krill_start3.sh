@@ -94,17 +94,9 @@ cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
 server {
   server_name krill.example.org;
   client_max_body_size 100M;
-  
-  # Add some URI support for running a public testbed page
-  
-  # Permanently redirect users to the *unauthenticated* testbed
-  # signup page where they can add their CA as a child and publisher
-  if ($request_uri = "/") {
-    return 301 https://krill.example.org/index.html#/testbed;
-  }
+
   # Rewrite the TAL URI used on the testbed page to the real file.
   rewrite ^/testbed.tal$ /ta/ta.tal;
-
 
   # Maps to the base directory where krill-sync stores RRDP files.
   location /rrdp {
