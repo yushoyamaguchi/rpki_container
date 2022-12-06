@@ -83,20 +83,43 @@ EOL
 
 systemctl start krill
 
-mkdir /var/lib/krill-sync/rrdp
-mkdir /var/lib/krill-sync/rsync
+mkdir /var/lib/krill-sync/repository
+mkdir /var/lib/krill-sync/repository/rrdp
+mkdir /var/lib/krill-sync/repository/rsync
 
 
 rm /etc/nginx/sites-enabled/default
 
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
 server {
-      server_name krill.example.org;
-      client_max_body_size 100M;
+  server_name krill.example.org;
+  client_max_body_size 100M;
+  
+  # Add some URI support for running a public testbed page
+  
+  # Permanently redirect users to the *unauthenticated* testbed
+  # signup page where they can add their CA as a child and publisher
+  if ($request_uri = "/") {
+    return 301 https://krill.example.org/index.html#/testbed;
+  }
+  # Rewrite the TAL URI used on the testbed page to the real file.
+  rewrite ^/testbed.tal$ /ta/ta.tal;
 
-      location / {
-              proxy_pass https://localhost:3000/;
-      }
+
+  # Maps to the base directory where krill-sync stores RRDP files.
+  location /rrdp {
+     root /var/lib/krill-sync/;
+  }
+
+  # Maps to the base directory where we copy the TA certificate and TAL.
+  location /ta {
+     root /var/lib/krill-sync/repository/;
+  }
+
+  # All other requests go to the krill backend.
+  location / {
+    proxy_pass https://localhost:3000/;
+  }
 
   listen 80;
 }

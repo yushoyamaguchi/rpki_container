@@ -1,0 +1,2 @@
+/var/lib/krill-syncディレクトリの中に
+rrdpディレクトリとrsyncディレクトリを置く
