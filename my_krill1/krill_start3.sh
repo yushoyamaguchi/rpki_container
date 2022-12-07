@@ -2,6 +2,7 @@
 
 systemctl enable krill
 systemctl enable nginx
+systemctl enable rsync
 
 #rewrite executer of /usr/lib/systemd/system/krill.service 
 sed -i -e 's/User=krill/User=root/g' /usr/lib/systemd/system/krill.service
@@ -10,10 +11,6 @@ sed -i -e 's/User=krill/User=root/g' /usr/lib/systemd/system/krill.service
 #rewrite executer of nginx
 sed -i -e 's/user www-data;/user root;/g' /etc/nginx/nginx.conf
 
-
-mkdir /var/lib/krill-sync/repository
-mkdir /var/lib/krill-sync/repository/rrdp
-mkdir /var/lib/krill-sync/repository/rsync
 
 
 cat <<EOL > /etc/krill.conf
@@ -88,6 +85,7 @@ EOL
 
 systemctl start krill
 
+mkdir /var/lib/krill/ta
 
 
 
@@ -101,14 +99,10 @@ server {
   # Rewrite the TAL URI used on the testbed page to the real file.
   rewrite ^/testbed.tal$ /ta/ta.tal;
 
-  # Maps to the base directory where krill-sync stores RRDP files.
-  location /rrdp {
-     root /var/lib/krill-sync/;
-  }
 
   # Maps to the base directory where we copy the TA certificate and TAL.
   location /ta {
-     root /var/lib/krill-sync/repository/;
+     root //var/lib/krill/;
   }
 
   # All other requests go to the krill backend.
@@ -120,4 +114,27 @@ server {
 }
 EOL
 
+
 systemctl start nginx
+
+curl --insecure https://localhost:3000/ta/ta.tal --output /var/lib/krill/ta/ta.tal
+curl --insecure https://localhost:3000/ta/ta.cer --output /var/lib/krill/ta/ta.cer
+
+
+cat <<EOL > /etc/rsyncd.conf
+uid = root
+gid = root
+max connections = 50
+
+[repo]
+path = /var/lib/krill/data/repo/rsync/current/
+comment = RPKI repository
+read only = yes
+
+[ta]
+path = /var/lib/krill/ta/
+comment = Testbed Trust Anchor
+read only = yes
+EOL
+
+systemctl start rsync
