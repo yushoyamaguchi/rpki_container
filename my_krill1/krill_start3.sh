@@ -11,6 +11,11 @@ sed -i -e 's/User=krill/User=root/g' /usr/lib/systemd/system/krill.service
 sed -i -e 's/user www-data;/user root;/g' /etc/nginx/nginx.conf
 
 
+mkdir /var/lib/krill-sync/repository
+mkdir /var/lib/krill-sync/repository/rrdp
+mkdir /var/lib/krill-sync/repository/rsync
+
+
 cat <<EOL > /etc/krill.conf
 
 ###########################################################
@@ -83,9 +88,7 @@ EOL
 
 systemctl start krill
 
-mkdir /var/lib/krill-sync/repository
-mkdir /var/lib/krill-sync/repository/rrdp
-mkdir /var/lib/krill-sync/repository/rsync
+
 
 
 rm /etc/nginx/sites-enabled/default
