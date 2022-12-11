@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#config in https://blog.apnic.net/2022/05/27/making-a-krill-sandbox/
+
 systemctl enable krill
 systemctl enable nginx
 systemctl enable rsync
