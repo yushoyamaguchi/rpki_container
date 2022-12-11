@@ -128,8 +128,6 @@ systemctl start nginx
 mkdir /mnt/volume_ams3_03/repository
 mkdir /mnt/volume_ams3_03/repository/ta
 
-curl --insecure https://localhost:3000/ta/ta.tal --output /mnt/volume_ams3_03/repository/ta/ta.tal
-curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/repository/ta/ta.cer
 
 
 cat <<EOL > /etc/rsyncd.conf
@@ -155,3 +153,8 @@ ln -s /mnt/volume_ams3_03/repository/rsync /var/lib/krill-sync/rsync
 
 
 systemctl start rsync
+
+curl --insecure https://localhost:3000/ta/ta.tal --output /mnt/volume_ams3_03/repository/ta/ta.tal
+curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/repository/ta/ta.cer
+
+krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /var/lib/krill/data/repo/rrdp/

@@ -117,8 +117,7 @@ EOL
 
 systemctl start nginx
 
-curl --insecure https://localhost:3000/ta/ta.tal --output /var/lib/krill/ta/ta.tal
-curl --insecure https://localhost:3000/ta/ta.cer --output /var/lib/krill/ta/ta.cer
+
 
 
 cat <<EOL > /etc/rsyncd.conf
@@ -138,3 +137,6 @@ read only = yes
 EOL
 
 systemctl start rsync
+
+curl --insecure https://localhost:3000/ta/ta.tal --output /var/lib/krill/ta/ta.tal
+curl --insecure https://localhost:3000/ta/ta.cer --output /var/lib/krill/ta/ta.cer

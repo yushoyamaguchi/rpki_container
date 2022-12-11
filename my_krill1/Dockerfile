@@ -12,12 +12,13 @@ RUN sed -i -e '$a deb [arch=amd64] https://packages.nlnetlabs.nl/linux/debian/ b
 RUN sed -i -e '$a deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ xenial main' /etc/apt/sources.list
 RUN sed -i -e '$a deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ bionic main' /etc/apt/sources.list
 RUN sed -i -e '$a deb [arch=amd64] https://packages.nlnetlabs.nl/linux/ubuntu/ focal main' /etc/apt/sources.list
+RUN sed -i -e '$a deb [arch=amd64] http://security.ubuntu.com/ubuntu bionic-security main' /etc/apt/sources.list
 
 RUN wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | apt-key add -
 
 
 RUN apt -y update
-RUN apt -y install krill krill-sync
+RUN apt -y install krill krill-sync libssl1.0.0
 
 COPY ./krill_start4.sh krill_start4.sh
 
