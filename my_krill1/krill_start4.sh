@@ -160,3 +160,5 @@ curl --insecure https://localhost:3000/ta/ta.tal --output /mnt/volume_ams3_03/re
 curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/repository/ta/ta.cer
 
 krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /var/lib/krill/data/repo/rrdp/
+
+krillc add --ca newca --token yama80
