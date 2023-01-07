@@ -1,0 +1,30 @@
+[req]
+default_bits            = 2048
+default_md              = sha256
+distinguished_name      = req_dn
+prompt                  = no
+encrypt_key             = no
+
+[req_dn]
+CN                      = CANAME
+
+[x509v3_extensions]
+basicConstraints        = critical,CA:true
+subjectKeyIdentifier    = hash
+keyUsage                = critical,keyCertSign,cRLSign
+subjectInfoAccess       = @sia
+certificatePolicies     = critical,1.3.6.1.5.5.7.14.2
+sbgp-autonomousSysNum   = critical,@rfc3779_asns
+sbgp-ipAddrBlock        = critical,@rfc3779_addrs
+
+[sia]
+1.3.6.1.5.5.7.48.5;URI  = rsync://rpki.osaka-u.jp/ta/
+1.3.6.1.5.5.7.48.10;URI = rsync://rpki.osaka-u.jp/ta/CANAME.mft
+1.3.6.1.5.5.7.48.13;URI = https://rpki.osaka-u.jp/rrdp/ta/notification.xml
+
+[rfc3779_asns]
+AS.0 = 173
+AS.1 = 1233
+[rfc3779_addrs]
+IPv4.1 = 1.0.16.0/20
+IPv4.2 = 1.0.64.0/18
