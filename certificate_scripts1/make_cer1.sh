@@ -3,7 +3,7 @@
 OPENSSL=openssl
 
 DATE=`/bin/date +%Y-%m%d`
-SERIAL=`cat /proc/meminfo | ${OPENSSL} sha1 -sha256 |cut -d " " -f 2 | cut -c 1-11`
+SERIAL=`cat /proc/meminfo | ${OPENSSL} sha256 -sha256 |cut -d " " -f 2 | cut -c 1-11`
 echo $SERIAL
 
 OPENSSLCNF=opensslcnf-template.txt
