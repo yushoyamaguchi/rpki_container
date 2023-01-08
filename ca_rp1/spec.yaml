@@ -25,3 +25,4 @@ node_configs:
   - name: rp
     cmds:
       - cmd: ip addr add 10.0.0.2/24 dev net0
+      - cmd: bash routinator_start1.sh
