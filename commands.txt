@@ -1,2 +1,6 @@
 証明書中身確認
 openssl x509 -text -inform der -in CANAME.cer | less
+
+
+routinator側からkrillへ接続
+curl http://10.0.0.1:80/ta/ta.tal
