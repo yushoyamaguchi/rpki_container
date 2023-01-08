@@ -161,4 +161,7 @@ curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/re
 
 krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /var/lib/krill/data/repo/rrdp/
 
-krillc add --ca newca --token yama80
+
+echo "export KRILL_CLI_TOKEN=yama80" >>/root/.bashrc
+echo "export KRILL_CLI_MY_CA=ta"  >>/root/.bashrc
+echo "export KRILL_CLI_SERVER=https://localhost:3000/" >>/root/.bashrc
