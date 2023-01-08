@@ -21,7 +21,6 @@ node_configs:
   - name: R1
     cmds:
       - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
-      - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
       - cmd: /usr/lib/frr/frrinit.sh start
       - cmd: ip addr add 10.0.0.1/24 dev net0
       - cmd: >-

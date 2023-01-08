@@ -1,0 +1,26 @@
+nodes:
+- name: ca
+  image: yama_krill:test1
+  docker_run_extra_args: --entrypoint bash
+  interfaces:
+  - { name: net0, type: direct, args: rp#net0 }
+  sysctls:
+  - sysctl: net.ipv6.conf.all.disable_ipv6=0
+  - sysctl: net.ipv6.conf.default.disable_ipv6=0
+  - sysctl: net.ipv4.ip_forward=1
+- name: rp
+  image: yama_routinator:test1
+  docker_run_extra_args: --entrypoint bash
+  interfaces:
+  - { name: net0, type: direct, args: ca#net0 }
+  sysctls:
+  - sysctl: net.ipv6.conf.all.disable_ipv6=0
+  - sysctl: net.ipv6.conf.default.disable_ipv6=0
+  - sysctl: net.ipv4.ip_forward=1
+node_configs:
+  - name: ca
+    cmds:
+      - cmd: ip addr add 10.0.0.1/24 dev net0
+  - name: rp
+    cmds:
+      - cmd: ip addr add 10.0.0.2/24 dev net0
