@@ -21,6 +21,7 @@ node_configs:
   - name: ca
     cmds:
       - cmd: ip addr add 10.0.0.1/24 dev net0
+      - cmd: bash krill_start4.sh
   - name: rp
     cmds:
       - cmd: ip addr add 10.0.0.2/24 dev net0
