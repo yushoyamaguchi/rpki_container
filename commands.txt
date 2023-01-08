@@ -1,0 +1,2 @@
+証明書中身確認
+openssl x509 -text -inform der -in CANAME.cer | less
