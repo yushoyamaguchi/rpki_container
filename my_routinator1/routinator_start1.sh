@@ -7,7 +7,8 @@ systemctl enable routinator
 sed -i -e 's/User=routinator/User=root/g' /usr/lib/systemd/system/routinator.service
 
 mkdir /tal
-routinator --config /etc/routinator/routinator.conf--extra-tals-dir=tal config
+routinator --config /etc/routinator/routinator.conf --extra-tals-dir=tal config
+echo "extra-tals-dir = \"/tal\" " >> /etc/routinator/routinator.conf
 
 systemctl start routinator
 
