@@ -25,3 +25,18 @@ root@rp:/# find / -name "*.cer"
 ```
 taじゃなくてtestbedの方のmftを見に行っているのはなぜ？->
 routinator updateをした時、下のcerが入る。　　この中に、謎のmftが書いてある。
+
+
+## 疑惑
+```
+rsync://krill.example.org/repo/ta/0/
+```
+にアクセスしたときに、
+```
+/var/lib/krill/data/repo/rsync/current/ta/0/
+```
+ここにアクセスできてない？
+
+## もう一つの課題
+routinatorの設定の永続化方法  
+場合によってはinitがすでにあるversionに変える
