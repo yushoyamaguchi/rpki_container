@@ -18,6 +18,17 @@ routinator --config /etc/routinator/routinator.conf update
 
 <br>
 1回caをtestbedにしてから試してみる
+<br>
+ちなみに、routinatorサーバの/var/lib/routinator/rpki-cache/rsync/krill.example.org/ta/ta.cerにrsync://krill.example.org/repo/ta/0/86ABB44EA89B7DE2DA912575E7D67BCB4EA1FB2C.mftこのマニフェストが載ってる
+<br>
+
+このcerは、krillサーバ側の/mnt/volume_ams3_03/repository/ta/ta.cerと一致
+### 目標
+cerにURI:rsync://krill.example.org/repo/ta/0/F51A2616440B832DAC4FED28567CA5095A8811A5.mftと入っている。
+このmftはkrillサーバの/var/lib/krill/data/repo/rsync/current/ta/0/F51A2616440B832DAC4FED28567CA5095A8811A5.mftを指している。
+ここを一致させるのが目標！！
+
+
 ```
 root@rp:/# find / -name "*.cer"
 /var/lib/routinator/rpki-cache/rsync/krill.example.org/ta/ta.cer
