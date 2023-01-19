@@ -48,6 +48,21 @@ rsync://krill.example.org/repo/ta/0/
 ```
 ここにアクセスできてない？
 
+## ためしてだめだったこと
+
+/etc/nginx/sites-enabled/krill.example.org
+```
+location /ta {
+    root /var/lib/krill/data/repo/rsync/current;
+}
+```
+
+/etc/krill.conf
+```
+data_dir = "/mnt/volume_ams3_03/
+```
+
+
 ## もう一つの課題
 routinatorの設定の永続化方法  
 場合によってはinitがすでにあるversionに変える

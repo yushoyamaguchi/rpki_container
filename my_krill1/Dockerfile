@@ -21,7 +21,7 @@ RUN wget -qO- https://packages.nlnetlabs.nl/aptkey.asc | apt-key add -
 RUN apt -y update
 RUN apt -y install krill krill-sync libssl1.0.0 libssl-dev
 
-COPY ./krill_start4.sh krill_start4.sh
+COPY ./krill_start5.sh krill_start5.sh
 COPY ./make_cer1.sh make_cer1.sh
 COPY ./opensslcnf-template.txt opensslcnf-template.txt
 

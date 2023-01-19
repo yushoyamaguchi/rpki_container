@@ -1,0 +1,37 @@
+http://krill.example.org/ta/ta.tal 
+
+rsync://krill.example.org/repo/ta/0/4A82371BFA82CBBA0904E961849E711CF0A653FE.mft
+
+
+/etc/krill.confに
+rsync_jail = "rsync://krill.example.org/repo/"
+こう書いてるため
+
+-----------------------------------------------------------------------------------
+
+/mnt/volume_ams3_03/repository/ta/ta.tal
+
+/var/lib/krill/data/repo/rsync/current/ta/0/F51A2616440B832DAC4FED28567CA5095A8811A5.mft
+
+/etc/krill.conf に
+data_dir = "/var/lib/krill/data/"
+こう書いてるため
+
+-----------------------------------------------------------------------------------
+
+http://krill.example.org/ = /mnt/volume_ams3_03/repository/
+
+/etc/nginx/sites-enabled/krill.example.org に
+  location /ta {
+     root /mnt/volume_ams3_03/repository/;
+  }
+こう書いてるため
+
+
+---------------------------------------
+本来の設定では、
+[Service]
+ReadWritePaths=/mnt/volume_ams3_03/krill-data/
+とした上で、
+ln -s /mnt/volume_ams3_03/krill-data /var/lib/krill/data
+として、
