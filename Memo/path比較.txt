@@ -11,6 +11,8 @@ rsync_jail = "rsync://krill.example.org/repo/"
 
 /mnt/volume_ams3_03/repository/ta/ta.tal
 
+ここがhttp://krill.example.org/ta/の場所というわけではない！！
+
 /var/lib/krill/data/repo/rsync/current/ta/0/F51A2616440B832DAC4FED28567CA5095A8811A5.mft
 
 /etc/krill.conf に
