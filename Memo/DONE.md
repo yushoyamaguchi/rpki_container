@@ -5,7 +5,7 @@ aptの何かが壊れていてupdateできなかったので、原因となる�
 ```
 curl --insecure http://krill.example.org/ta/ta.tal >> /tal/ta.tal
 
-routinator --config /etc/routinator/routinator.conf update
+routinator -v --config /etc/routinator/routinator.conf update
 ```
 でkrillとroutinatorの疎通を確かめるも、
 ```
@@ -66,3 +66,6 @@ data_dir = "/mnt/volume_ams3_03/
 ## もう一つの課題
 routinatorの設定の永続化方法  
 場合によってはinitがすでにあるversionに変える
+
+# rsync解決！
+rysncd.confのパスを書き換えたらいけた！

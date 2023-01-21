@@ -115,6 +115,11 @@ server {
      root /mnt/volume_ams3_03/repository/;
   }
 
+  # for mft 結果的にこれはいらなかった...
+  location /repo/ta/ {
+      alias /var/lib/krill/data/repo/rsync/current/ta/;
+}
+
   # All other requests go to the krill backend.
   location / {
     proxy_pass https://localhost:3000/;
@@ -138,7 +143,7 @@ gid = root
 max connections = 50
 
 [repo]
-path = /var/lib/krill-sync/rsync/current/
+path = /var/lib/krill/data/repo/rsync/current/
 comment = RPKI repository
 read only = yes
 

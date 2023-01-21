@@ -6,3 +6,9 @@ sudo docker cp  ./krill_start3.sh krill_con:/krill_start3b.sh
 
 optionつけてdocker runしたいとき
 nodes[].docker_run_extra_args 
+
+
+
+sudo docker exec -it rp tcpdump -i net0 -w a.pcap 
+
+sudo docker cp rp:/a.pcap ~/yusho/2022/yama_rsync.pcap

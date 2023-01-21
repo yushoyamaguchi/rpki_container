@@ -31,9 +31,19 @@ http://krill.example.org/ = /mnt/volume_ams3_03/repository/
 
 
 ---------------------------------------
-本来の設定では、
-[Service]
-ReadWritePaths=/mnt/volume_ams3_03/krill-data/
-とした上で、
-ln -s /mnt/volume_ams3_03/krill-data /var/lib/krill/data
-として、
+すべきこと
+rsyncdの設定をいじって
+rsync://krill.example.org/repo/ta/0/F38767C78892F939E2E30A4830B7B1A2DE1BE75F
+にアクセスした時に
+/var/lib/krill/data/repo/rsync/current/ta/0/F38767C78892F939E2E30A4830B7B1A2DE1BE75F.mft
+を見れるようにする
+
+
+nginxの設定をいじって
+
+https://krill.example.org/rrdp/notification.xml
+にアクセスした時に
+/mnt/volume_ams3_03/repository/rrdp/notification.xml
+または
+/var/lib/krill/data/repo/rrdp/notification.xml
+にアクセスするようにする
