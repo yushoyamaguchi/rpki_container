@@ -99,6 +99,7 @@ rm /etc/nginx/sites-enabled/default
 
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
 server {
+  listen 443 ssl;
   server_name krill.example.org;
   client_max_body_size 100M;
 
