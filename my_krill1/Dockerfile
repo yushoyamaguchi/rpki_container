@@ -6,6 +6,7 @@ RUN apt -y install tcpdump nmap traceroute vim strace less
 RUN apt -y install ca-certificates curl gnupg lsb-release wget
 RUN apt -y install python3 nginx certbot python3-certbot-nginx
 RUN apt -y install openssl libnss3-tools
+#systemd入れたらなんかバグったのでjournalctl使えない
 
 RUN curl -s https://api.github.com/repos/FiloSottile/mkcert/releases/latest | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4 | wget -qi - \
     && mv mkcert-v*-linux-amd64 mkcert \

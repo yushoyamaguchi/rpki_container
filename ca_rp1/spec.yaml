@@ -21,8 +21,8 @@ node_configs:
   - name: ca
     cmds:
       - cmd: ip addr add 10.0.0.1/24 dev net0
-      - cmd: bash krill_start6.sh
+      #- cmd: bash krill_start6.sh
   - name: rp
     cmds:
       - cmd: ip addr add 10.0.0.2/24 dev net0
-      - cmd: bash routinator_start1.sh
+      #- cmd: bash routinator_start1.sh

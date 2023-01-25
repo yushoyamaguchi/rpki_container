@@ -11,3 +11,7 @@ routinator --extra-tals-dir=tal config
 
 ファイルを再帰的に検索
 find / -name "*.cer"
+
+
+routinatorでkrillから情報を取ってくる
+routinator -v --config /etc/routinator/routinator.conf update

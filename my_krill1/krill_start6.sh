@@ -97,8 +97,14 @@ ln -s /mnt/volume_ams3_03/krill-data /var/lib/krill/data
 
 rm /etc/nginx/sites-enabled/default
 
+SJ="/CN=krill.example.org"
+mkdir -p /etc/nginx/ssl
+openssl genrsa -out /etc/nginx/ssl/server.key 2048
+openssl req -new -key /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.csr -subj "$SJ"
+
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
 server {
+  
   server_name krill.example.org;
   client_max_body_size 100M;
 
@@ -129,6 +135,22 @@ server {
   listen 80;
 }
 EOL
+
+#ここを適切なファイルに書き込むように変える
+cat <<EOL >>etc/nginx/conf.d/krill_server.conf
+server {
+    listen 80;
+}
+
+server {
+    listen 443 ssl;
+
+    ssl on;
+    ssl_certificate     /etc/nginx/ssl/server.crt;
+    ssl_certificate_key /etc/nginx/ssl/server.key;
+}
+EOL
+
 
 
 systemctl start nginx
@@ -171,3 +193,5 @@ krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /va
 echo "export KRILL_CLI_TOKEN=yama80" >>/root/.bashrc
 echo "export KRILL_CLI_MY_CA=ta"  >>/root/.bashrc
 echo "export KRILL_CLI_SERVER=https://localhost:3000/" >>/root/.bashrc
+
+
