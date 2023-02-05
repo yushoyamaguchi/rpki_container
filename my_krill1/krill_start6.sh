@@ -137,6 +137,7 @@ server {
 EOL
 
 #ここを適切なファイルに書き込むように変える
+#現状、ここがあるせいでうまくnginx起動できてない
 cat <<EOL >>etc/nginx/conf.d/krill_server.conf
 server {
     listen 80;
