@@ -101,12 +101,15 @@ SJ="/CN=krill.example.org"
 mkdir -p /etc/nginx/ssl
 openssl genrsa -out /etc/nginx/ssl/server.key 2048
 openssl req -new -key /etc/nginx/ssl/server.key -out /etc/nginx/ssl/server.csr -subj "$SJ"
+openssl x509 -in /etc/nginx/ssl/server.csr -days 365 -req -signkey /etc/nginx/ssl/server.key > /etc/nginx/ssl/server.crt
 
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
 server {
   
   server_name krill.example.org;
   client_max_body_size 100M;
+
+  listen 80;
 
   # Rewrite the TAL URI used on the testbed page to the real file.
   rewrite ^/testbed.tal$ /ta/ta.tal;
@@ -125,32 +128,50 @@ server {
   # for mft 結果的にこれはいらなかった...
   location /repo/ta/ {
       alias /var/lib/krill/data/repo/rsync/current/ta/;
-}
+  }
 
   # All other requests go to the krill backend.
   location / {
     proxy_pass https://localhost:3000/;
   }
-
-  listen 80;
-}
-EOL
-
-#ここを適切なファイルに書き込むように変える
-#現状、ここがあるせいでうまくnginx起動できてない
-cat <<EOL >>etc/nginx/conf.d/krill_server.conf
-server {
-    listen 80;
 }
 
 server {
-    listen 443 ssl;
+  
+  server_name krill.example.org;
+  client_max_body_size 100M;
 
-    ssl on;
-    ssl_certificate     /etc/nginx/ssl/server.crt;
-    ssl_certificate_key /etc/nginx/ssl/server.key;
+  listen 443;
+  ssl on;
+  ssl_certificate     /etc/nginx/ssl/server.crt;
+  ssl_certificate_key /etc/nginx/ssl/server.key;
+
+  # Rewrite the TAL URI used on the testbed page to the real file.
+  rewrite ^/testbed.tal$ /ta/ta.tal;
+
+  # Maps to the base directory where krill-sync stores RRDP files.
+  # /var/lib/krill/data/repo/ こっちにすべきかも...
+  location /rrdp {
+     root /var/lib/krill-sync/;
+  }
+
+  # Maps to the base directory where we copy the TA certificate and TAL.
+  location /ta {
+     root /mnt/volume_ams3_03/repository/;
+  }
+
+  # for mft 結果的にこれはいらなかった...
+  location /repo/ta/ {
+      alias /var/lib/krill/data/repo/rsync/current/ta/;
+  }
+
+  # All other requests go to the krill backend.
+  location / {
+    proxy_pass https://localhost:3000/;
+  }
 }
 EOL
+
 
 
 
