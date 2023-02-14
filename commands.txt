@@ -15,3 +15,7 @@ find / -name "*.cer"
 
 routinatorでkrillから情報を取ってくる
 routinator -v --config /etc/routinator/routinator.conf update
+routinator -v --config /etc/routinator/routinator.conf vrps
+
+routinator -v --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert rootCA.crt update
+routinator -v --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert rootCA.crt vrps
