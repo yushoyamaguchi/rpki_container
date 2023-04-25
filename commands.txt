@@ -4,6 +4,7 @@ openssl x509 -text -inform der -in CANAME.cer | less
 
 routinator側からkrillへ接続
 curl http://10.0.0.1:80/ta/ta.tal
+curl --insecure https://10.0.0.1:80/ta/ta.tal
 
 routinatorへ新しいtalのディレクトリを書く
 routinator --extra-tals-dir=tal config
@@ -14,6 +15,7 @@ find / -name "*.cer"
 
 
 routinatorでkrillから情報を取ってくる
+routinator -v --config /etc/routinator/routinator.conf --rrdp-root-cert=rootCA.crt update
 routinator -v --config /etc/routinator/routinator.conf update
 routinator -v --config /etc/routinator/routinator.conf vrps
 
