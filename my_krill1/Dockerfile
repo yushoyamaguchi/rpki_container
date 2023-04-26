@@ -5,7 +5,7 @@ RUN apt -y install iproute2 iputils-ping net-tools systemctl rsync sudo
 RUN apt -y install tcpdump nmap traceroute vim strace less
 RUN apt -y install ca-certificates curl gnupg lsb-release wget
 RUN apt -y install python3 nginx certbot python3-certbot-nginx
-RUN apt -y install openssl libnss3-tools
+RUN apt -y install openssl libnss3-tools rsyslog
 #systemd入れたらなんかバグったのでjournalctl使えない
 
 RUN curl -s https://api.github.com/repos/FiloSottile/mkcert/releases/latest | grep browser_download_url | grep linux-amd64 | cut -d '"' -f 4 | wget -qi - \

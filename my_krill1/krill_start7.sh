@@ -186,7 +186,7 @@ server {
 EOL
 
 
-
+systemctl start rsyslog
 
 systemctl start nginx
 

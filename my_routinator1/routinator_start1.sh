@@ -10,6 +10,8 @@ mkdir /tal
 routinator --config /etc/routinator/routinator.conf --extra-tals-dir=tal config
 echo "extra-tals-dir = \"/tal\" " >> /etc/routinator/routinator.conf
 
+systemctl start rsyslog
+
 systemctl start routinator
 
 echo -e "10.0.0.1\tkrill.example.org" >> /etc/hosts
