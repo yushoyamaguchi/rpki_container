@@ -69,3 +69,7 @@ routinatorの設定の永続化方法
 
 # rsync解決！
 rysncd.confのパスを書き換えたらいけた！
+
+
+# 230430
+/etc/routinatorの下のconfigはroutinatorデーモンからきちんと読まれていそう
