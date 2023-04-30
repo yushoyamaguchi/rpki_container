@@ -66,13 +66,6 @@ node_configs:
           -c ' address-family ipv4 unicast'
           -c '  redistribute connected'
           -c ' exit-address-family'
-          -c 'route-map rpki permit 10'
-          -c ' match rpki invalid'
-          -c ' set local-preference 10'
-          -c 'route-map rpki permit 500'
-          -c ' match rpki valid'
-          -c ' set local-preference 500'
-          -c ' exit'
           -c '!'   
   - name: R2
     cmds:
@@ -90,14 +83,21 @@ node_configs:
           -c "no bgp ebgp-requires-policy"
           -c ' bgp router-id 2.2.2.2'
           -c "neighbor 10.1.0.1 remote-as 65001"
-          -c "neighbor 10.1.0.1 route-map rpki in"
           -c ' address-family ipv4 unicast'
           -c '  redistribute connected'
+          -c "  neighbor 10.1.0.1 route-map rpki in"
           -c ' exit-address-family'
           -c 'route-map rpki permit 10'
           -c ' match rpki invalid'
           -c ' set local-preference 10'
-          -c 'route-map rpki permit 500'
+          -c ' exit'
+          -c 'route-map rpki permit 20'
+          -c ' match rpki notfound'
+          -c ' set local-preference 20'
+          -c ' exit'
+          -c 'route-map rpki permit 50'
           -c ' match rpki valid'
-          -c ' set local-preference 500'
+          -c ' set local-preference 50'
+          -c ' exit'
+          -c 'route-map rpki permit 40'
           -c '!'   
