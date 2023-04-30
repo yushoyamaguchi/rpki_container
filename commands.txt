@@ -18,6 +18,9 @@ routinatorでkrillから情報を取ってくる
 routinator -v --config /etc/routinator/routinator.conf --rrdp-root-cert=rootCA.crt update
 routinator -v --config /etc/routinator/routinator.conf update
 routinator -v --config /etc/routinator/routinator.conf vrps
+routinator -v --disable-rrdp --config /etc/routinator/routinator.conf vrps
+routinator -v --disable-rrdp --config /etc/routinator/routinator.conf server
+routinator -v --disable-rrdp --config /etc/routinator/routinator.conf server --rtr 192.168.1.1:3323
 
 routinator -v --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert rootCA.crt update
 routinator -v --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert rootCA.crt vrps
