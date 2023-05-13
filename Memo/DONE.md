@@ -73,6 +73,7 @@ rysncd.confのパスを書き換えたらいけた！
 
 # 230430
 /etc/routinatorの下のconfigはroutinatorデーモンからきちんと読まれていそう
+->localhost以外を開いたところ、読まないように変わっちゃうみたい(0513)
 <br>
 full_rsyncはrpとR1でRTRを張って実験したい
 

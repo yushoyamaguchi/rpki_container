@@ -8,6 +8,8 @@ sed -i -e 's/User=routinator/User=root/g' /usr/lib/systemd/system/routinator.ser
 
 mkdir /tal
 routinator --config /etc/routinator/routinator.conf --extra-tals-dir=tal config
+sed -i -e 's/rtr-listen = \["127.0.0.1:3323"\]/rtr-listen = \["192.168.1.1:3323"\]/g' /etc/routinator/routinator.conf
+sed -i -e 's/http-listen = \["127.0.0.1:8323"\]/http-listen = \["192.168.1.1:8323"\]/g' /etc/routinator/routinator.conf
 echo "extra-tals-dir = \"/tal\" " >> /etc/routinator/routinator.conf
 
 systemctl start rsyslog
