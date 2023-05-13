@@ -73,3 +73,28 @@ rysncd.confのパスを書き換えたらいけた！
 
 # 230430
 /etc/routinatorの下のconfigはroutinatorデーモンからきちんと読まれていそう
+<br>
+full_rsyncはrpとR1でRTRを張って実験したい
+
+# 0513
+# rpで手動でRTRサーバを立ち上げた後R1に手動で設定を入れた
+```
+   Network          Next Hop            Metric LocPrf Weight Path
+N*  10.1.0.0/24      10.1.0.2                 0     20      0 65002 ?
+N*>                  0.0.0.0                  0         32768 ?
+V*> 192.168.1.0/24   0.0.0.0                  0         32768 ?
+V*> 192.168.2.0/24   10.1.0.2                 0             0 65002 ?
+```
+
+```
+R1# show rpki prefix-table 
+host: 192.168.1.1 port: 3323
+RPKI/RTR prefix table
+Prefix                                   Prefix Length  Origin-AS
+192.168.1.0                                 24 -  24        65001
+192.168.2.0                                 24 -  24        65002
+Number of IPv4 Prefixes: 2
+Number of IPv6 Prefixes: 0
+```
+
+肝心の192.168.2.0/24のLocalPrefが設定されてない...が、Validにはなってる！
