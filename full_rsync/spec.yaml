@@ -78,6 +78,7 @@ node_configs:
           vtysh -c "conf t"
           -c "rpki"
           -c "rpki cache 192.168.2.1 3323 preference 2"
+          -c "rpki polling_period 10"
           -c "exit"
           -c "router bgp 65002"
           -c "no bgp ebgp-requires-policy"
