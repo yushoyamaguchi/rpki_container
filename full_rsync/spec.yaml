@@ -96,7 +96,7 @@ node_configs:
           -c ' match rpki notfound'
           -c ' set local-preference 20'
           -c ' exit'
-          -c 'route-map rpki permit 50'
+          -c 'route-map rpki permit 30'
           -c ' match rpki valid'
           -c ' set local-preference 50'
           -c ' exit'

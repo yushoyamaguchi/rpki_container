@@ -99,3 +99,14 @@ Number of IPv6 Prefixes: 0
 ```
 
 肝心の192.168.2.0/24のLocalPrefが設定されてない...が、Validにはなってる！
+<br>
+-> 答え:route-mapの横の数字はsec numberで、低いものから適用されていく
+match条件がないroute-mapは全経路に適用されるため、Valid経路がこちらに適用されちゃってた
+
+## route-map適用コマンド
+``` 
+neighbor 10.1.0.1 route-map rpki in
+```
+って打った時にThe route-map 'rpki' does not exist.になる問題の調査
+<br>
+-> 答え:その時はエラーメッセージが出るが、後々rpkiというroute-mapができた時には、このneighborコマンドそのroute-mapに適用されるから、問題ない(先打っといてもOK)
