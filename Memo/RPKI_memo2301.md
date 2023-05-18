@@ -19,3 +19,9 @@ http://oid-info.com/index.html
 
 asns
 自分の下に入っているasすべて
+
+# RPKIツリーの親子の情報について
+リソース証明書の拡張フィールドで表す。
+自分の子の情報はSIA(Subject Information Access)に、自分の親の情報はAIA(Authority Information Access)に格納する。
+つまり親子関係は、証明書を作る時点で確定していなければならない？
+新たに自分の下にCAができたら、証明書作り直し？
