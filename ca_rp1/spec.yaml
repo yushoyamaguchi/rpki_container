@@ -1,6 +1,7 @@
 nodes:
 - name: ca
   image: yama_krill:test1
+  net_base: bridge
   docker_run_extra_args: --entrypoint bash
   interfaces:
   - { name: net0, type: direct, args: rp#net0 }
