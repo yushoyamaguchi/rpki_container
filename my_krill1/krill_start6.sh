@@ -213,7 +213,7 @@ krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /va
 
 
 echo "export KRILL_CLI_TOKEN=yama80" >>/root/.bashrc
-echo "export KRILL_CLI_MY_CA=ta"  >>/root/.bashrc
+echo "export KRILL_CLI_MY_CA=testbed"  >>/root/.bashrc
 echo "export KRILL_CLI_SERVER=https://localhost:3000/" >>/root/.bashrc
 
 
