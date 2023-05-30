@@ -60,34 +60,17 @@ node_configs:
       - cmd: ip addr add 192.168.1.2/24 dev net1
       - cmd: >-
           vtysh -c "conf t"
+          -c "rpki"
+          -c "rpki cache 192.168.1.1 3323 preference 2"
+          -c "rpki polling_period 10"
+          -c "exit"
           -c "router bgp 65001"
           -c "no bgp ebgp-requires-policy"
           -c ' bgp router-id 1.1.1.1'
           -c "neighbor 10.1.0.2 remote-as 65002"
           -c ' address-family ipv4 unicast'
           -c '  redistribute connected'
-          -c ' exit-address-family'
-          -c '!'   
-  - name: R2
-    cmds:
-      - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
-      - cmd: sed -i -e 's/bgpd_options="   -A 127.0.0.1"/bgpd_options="   -A 127.0.0.1 -M rpki"/g' /etc/frr/daemons
-      - cmd: /usr/lib/frr/frrinit.sh start
-      - cmd: ip addr add 10.1.0.2/24 dev net0
-      - cmd: ip addr add 192.168.2.2/24 dev net1
-      - cmd: >-
-          vtysh -c "conf t"
-          -c "rpki"
-          -c "rpki cache 192.168.2.1 3323 preference 2"
-          -c "rpki polling_period 10"
-          -c "exit"
-          -c "router bgp 65002"
-          -c "no bgp ebgp-requires-policy"
-          -c ' bgp router-id 2.2.2.2'
-          -c "neighbor 10.1.0.1 remote-as 65001"
-          -c ' address-family ipv4 unicast'
-          -c '  redistribute connected'
-          -c "  neighbor 10.1.0.1 route-map rpki in"
+          -c "  neighbor 10.1.0.2 route-map rpki in"
           -c ' exit-address-family'
           -c 'route-map rpki permit 10'
           -c ' match rpki invalid'
@@ -102,4 +85,21 @@ node_configs:
           -c ' set local-preference 50'
           -c ' exit'
           -c 'route-map rpki permit 40'
+          -c '!'   
+  - name: R2
+    cmds:
+      - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
+      - cmd: sed -i -e 's/bgpd_options="   -A 127.0.0.1"/bgpd_options="   -A 127.0.0.1 -M rpki"/g' /etc/frr/daemons
+      - cmd: /usr/lib/frr/frrinit.sh start
+      - cmd: ip addr add 10.1.0.2/24 dev net0
+      - cmd: ip addr add 192.168.2.2/24 dev net1
+      - cmd: >-
+          vtysh -c "conf t"
+          -c "router bgp 65002"
+          -c "no bgp ebgp-requires-policy"
+          -c ' bgp router-id 2.2.2.2'
+          -c "neighbor 10.1.0.1 remote-as 65001"
+          -c ' address-family ipv4 unicast'
+          -c '  redistribute connected'
+          -c ' exit-address-family'
           -c '!'   
