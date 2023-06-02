@@ -30,3 +30,4 @@ RUN apt -y install krill krill-sync libssl1.0.0 libssl-dev
 
 
 COPY ./krill_regi1.sh krill_regi1.sh
+COPY ./krill_regi_simple.sh krill_regi_simple.sh
