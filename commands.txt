@@ -18,6 +18,7 @@ routinatorでkrillから情報を取ってくる
 routinator -v --config /etc/routinator/routinator.conf --rrdp-root-cert=rootCA.crt update
 routinator -v --config /etc/routinator/routinator.conf update
 routinator -v --config /etc/routinator/routinator.conf vrps
+routinator -v --config /etc/routinator/routinator.conf server
 routinator -v --disable-rrdp --config /etc/routinator/routinator.conf vrps
 routinator -v --disable-rrdp --config /etc/routinator/routinator.conf server
 routinator -v --disable-rsync --config /etc/routinator/routinator.conf server
