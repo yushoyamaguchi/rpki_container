@@ -169,7 +169,6 @@ systemctl start rsync
 curl --insecure https://localhost:3000/ta/ta.tal --output /mnt/volume_ams3_03/repository/ta/ta.tal
 curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/repository/ta/ta.cer
 
-cp /rootCA.crt /mnt/volume_ams3_03/repository/ta/
 
 krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /var/lib/krill/data/repo/rrdp/
 

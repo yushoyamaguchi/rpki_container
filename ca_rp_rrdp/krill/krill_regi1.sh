@@ -91,6 +91,7 @@ systemctl start krill
 
 
 mkdir /mnt/volume_ams3_03
+mkdir -p /mnt/volume_ams3_03/repository/ta
 mkdir /mnt/volume_ams3_03/krill-data
 ln -s /mnt/volume_ams3_03/krill-data /var/lib/krill/data
 
@@ -114,6 +115,7 @@ rm issuer.* subject.*
 mkdir -p /var/lib/krill/data/ssl/
 cp krill.key /var/lib/krill/data/ssl/key.pem 
 cp certbundle.pem /var/lib/krill/data/ssl/cert.pem
+cp certbundle.pem  /mnt/volume_ams3_03/repository/ta/cert.pem
 chown -R krill: /var/lib/krill
 
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
@@ -190,10 +192,6 @@ systemctl start rsyslog
 
 systemctl start nginx
 
-mkdir /mnt/volume_ams3_03/repository
-mkdir /mnt/volume_ams3_03/repository/ta
-
-
 
 cat <<EOL > /etc/rsyncd.conf
 uid = root
@@ -222,7 +220,6 @@ systemctl start rsync
 curl --insecure https://localhost:3000/ta/ta.tal --output /mnt/volume_ams3_03/repository/ta/ta.tal
 curl --insecure https://localhost:3000/ta/ta.cer --output /mnt/volume_ams3_03/repository/ta/ta.cer
 
-cp /rootCA.crt /mnt/volume_ams3_03/repository/ta/
 
 krill-sync https://krill.example.org/rrdp/notification.xml --source_uri_base /var/lib/krill/data/repo/rrdp/
 
