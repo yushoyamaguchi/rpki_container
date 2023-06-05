@@ -50,7 +50,7 @@ node_configs:
       - cmd: ip addr add 192.168.1.1/24 dev net1
       - cmd: ip addr add 192.168.2.1/24 dev net2
       - cmd: bash routinator_start1.sh
-      - cmd: nohup routinator -v --disable-rrdp --config /etc/routinator/routinator.conf server --rtr 192.168.1.1:3323 &
+      - cmd: /bin/bash -c "nohup routinator -v --disable-rrdp --config /etc/routinator/routinator.conf server --rtr 192.168.1.1:3323 1>routinator_output.log 2>&1" &
   - name: R1
     cmds:
       - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
