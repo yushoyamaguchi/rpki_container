@@ -116,6 +116,7 @@ mkdir -p /var/lib/krill/data/ssl/
 cp krill.key /var/lib/krill/data/ssl/key.pem 
 cp certbundle.pem /var/lib/krill/data/ssl/cert.pem
 cp certbundle.pem  /mnt/volume_ams3_03/repository/ta/cert.pem
+cp rootCA.crt  /mnt/volume_ams3_03/repository/ta/rootCA.crt
 chown -R krill: /var/lib/krill
 
 cat <<EOL >> /etc/nginx/sites-enabled/krill.example.org
