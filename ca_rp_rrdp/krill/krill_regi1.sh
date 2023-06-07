@@ -168,7 +168,7 @@ server {
   # Maps to the base directory where krill-sync stores RRDP files.
   # /var/lib/krill/data/repo/ こっちにすべきかも...
   location /rrdp {
-     root /var/lib/krill-sync/;
+     root /var/lib/krill/data/repo/;
   }
 
   # Maps to the base directory where we copy the TA certificate and TAL.
