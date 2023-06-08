@@ -21,6 +21,7 @@ routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf update
 routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf vrps
 routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf server
 routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf --rrdp-root-cert=cert.pem server
+routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf --rrdp-root-cert=cert.pem --enable-aspa server
 routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf --rrdp-root-cert=rootCA.crt server
 routinator -vv --no-rir-tals --disable-rrdp --config /etc/routinator/routinator.conf vrps
 routinator -vv --no-rir-tals --disable-rrdp --config /etc/routinator/routinator.conf server
