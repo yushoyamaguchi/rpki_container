@@ -32,8 +32,7 @@ routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf server --r
 routinator -vv --no-rir-tals --disable-rsync --config /etc/routinator/routinator.conf --rrdp-root-cert=cert.pem server --rtr 192.168.1.1:3323
 routinator -vv --no-rir-tals --disable-rsync --config /etc/routinator/routinator.conf --rrdp-root-cert=rootCA.crt server --rtr 192.168.1.1:3323
 
-routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert=cert.pem update
-routinator -vv --no-rir-tals --config /etc/routinator/routinator.conf --allow-dubious-hosts --disable-rsync --rrdp-root-cert=cert.pem vrps
+routinator -vv --no-rir-tals --extra-tals-dir=/tal --rrdp-root-cert=cert.pem --enable-aspa server
 
 
 
