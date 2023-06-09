@@ -3,3 +3,4 @@
 *.pem
 *.pcap
 *.bak
+routinator_build_local/*
