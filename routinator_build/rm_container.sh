@@ -1,5 +1,5 @@
 #/bin/bash
 
 
-docker stop CACHE
-docker rm CACHE
+docker stop rp
+docker rm rp
