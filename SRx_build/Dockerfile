@@ -10,14 +10,12 @@ RUN echo "tzdata tzdata/Areas select Asia" | debconf-set-selections && \
 RUN apt -y install texinfo texi2html libconfig-dev screen uthash-dev
 RUN apt -y install iproute2 iputils-ping net-tools
 RUN apt -y install build-essential
-RUN apt -y install openssl libssl1.0.0 libssl-dev
+RUN apt -y install openssl libssl-dev
 
 #build
 RUN git clone https://github.com/usnistgov/NIST-BGP-SRx.git
-WORKDIR /NIST-BGP-SRx/srx-crypt-api
-RUN ./configure
 WORKDIR /NIST-BGP-SRx/quagga-srx
-RUN ./configure --enable-vtysh --enable-bgpd
+RUN ./configure --enable-srxcryptoapi --enable-vtysh --enable-bgpd
 RUN make
 RUN make install
 WORKDIR /
