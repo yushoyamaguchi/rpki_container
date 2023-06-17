@@ -18,9 +18,7 @@ RUN git clone https://github.com/usnistgov/NIST-BGP-SRx.git
 WORKDIR /NIST-BGP-SRx
 RUN ./buildBGP-SRx.sh -A -T -X examples 1 -I ; exit 0
 WORKDIR /
-COPY ./gen_conf_scripts/gen_conf1.sh gen_conf1.sh
-COPY ./gen_conf_scripts/gen_conf2.sh gen_conf2.sh
-COPY ./gen_conf_scripts/gen_conf3.sh gen_conf3.sh
+
 COPY ./exec_router.sh exec_router.sh
 
 
