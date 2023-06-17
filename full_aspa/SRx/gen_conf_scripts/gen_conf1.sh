@@ -25,6 +25,18 @@ echo " neighbor 10.3.0.1 next-hop-self" >> $BGPD_CONF_FILE
 echo " neighbor 10.3.0.1 route-map setlocalpre in" >> $BGPD_CONF_FILE
 echo "!" >> $BGPD_CONF_FILE
 
+echo "srx set-proxy-id 192.168.1.1" >> $BGPD_CONF_FILE
+echo "srx set-server 192.168.1.1 3323" >> $BGPD_CONF_FILE
+echo " srx evaluation aspa" >> $BGPD_CONF_FILE
+echo " srx display" >> $BGPD_CONF_FILE
+
+echo " srx set-origin-value notfound" >> $BGPD_CONF_FILE
+echo " srx set-aspa-value undefined" >> $BGPD_CONF_FILE
+echo "!" >> $BGPD_CONF_FILE
+
+echo " srx connect" >> $BGPD_CONF_FILE
+echo "!" >> $BGPD_CONF_FILE
+
 echo "route-map setlocalpre permit 10" >> $BGPD_CONF_FILE
 echo " set local-preference 100" >> $BGPD_CONF_FILE
 echo "!" >> $BGPD_CONF_FILE
