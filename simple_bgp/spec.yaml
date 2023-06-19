@@ -26,8 +26,13 @@ node_configs:
       - cmd: >-
           vtysh -c "conf t"
           -c "router bgp 65001"
+          -c "no bgp ebgp-requires-policy"
           -c "bgp router-id 10.255.0.1"
           -c "neighbor 10.0.0.2 remote-as 65002"
+          -c ' address-family ipv4 unicast'
+          -c '  redistribute connected'
+          -c ' exit-address-family'
+          -c '!'
   - name: R2
     cmds:
       - cmd: sed -i -e 's/bgpd=no/bgpd=yes/g' /etc/frr/daemons
@@ -36,5 +41,10 @@ node_configs:
       - cmd: >-
           vtysh -c "conf t"
           -c "router bgp 65002"
+          -c "no bgp ebgp-requires-policy"
           -c "bgp router-id 10.255.0.2"
           -c "neighbor 10.0.0.1 remote-as 65001"
+          -c ' address-family ipv4 unicast'
+          -c '  redistribute connected'
+          -c ' exit-address-family'
+          -c '!'
