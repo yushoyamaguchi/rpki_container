@@ -22,9 +22,6 @@ routinator -vv --no-rir-tals --extra-tals-dir=/tal vrps
 routinator -vv --no-rir-tals --extra-tals-dir=/tal server
 routinator -vv --no-rir-tals --extra-tals-dir=/tal --rrdp-root-cert=cert.pem server
 routinator -vv --no-rir-tals --extra-tals-dir=/tal --rrdp-root-cert=rootCA.crt server
-routinator -vv --no-rir-tals --disable-rrdp --extra-tals-dir=/tal vrps
-routinator -vv --no-rir-tals --disable-rrdp --extra-tals-dir=/tal server
-routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal server
 routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal --rrdp-root-cert=cert.pem server
 routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal --rrdp-root-cert=rootCA.crt server
 routinator -vv --no-rir-tals --extra-tals-dir=/tal server --rtr 192.168.1.1:3323
