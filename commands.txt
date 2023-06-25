@@ -31,7 +31,7 @@ routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal --rrdp-root-c
 routinator -vv --no-rir-tals --extra-tals-dir=/tal --rrdp-root-cert=cert.pem --enable-aspa server
 
 
-nohup ./target/debug/routinator --disable-rsync -vv server 1>~/yusho/tmp/routinator_output_$(date +%m%d%H%M%S).log 2>&1 &
+nohup ./target/debug/routinator --disable-rsync --fresh -vv server 1>~/yusho/tmp/routinator_output_$(date +%m%d%H%M%S).log 2>&1 &
 
 
 
