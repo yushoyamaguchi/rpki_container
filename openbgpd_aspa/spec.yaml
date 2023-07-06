@@ -65,18 +65,18 @@ node_configs:
       - cmd: ip addr add 10.1.0.1/24 dev net0
       - cmd: ip addr add 10.3.0.2/24 dev net1
       - cmd: ip addr add 192.168.1.2/24 dev net2 
-      - cmd: bash -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd1.conf) | base64 -d > /etc/bgpd/bgpd.conf"
+      - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd1.conf) | base64 -d > /etc/bgpd/bgpd.conf"
       - cmd: bgpctl reload
   - name: R2
     cmds:
       - cmd: ip addr add 10.1.0.2/24 dev net0
       - cmd: ip addr add 10.2.0.1/24 dev net1
       - cmd: ip addr add 192.168.2.2/24 dev net2
-      - cmd: bash -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd2.conf) | base64 -d > /etc/bgpd/bgpd.conf"
+      - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd2.conf) | base64 -d > /etc/bgpd/bgpd.conf"
       - cmd: bgpctl reload
   - name: R3
     cmds:
       - cmd: ip addr add 10.3.0.1/24 dev net0
       - cmd: ip addr add 10.2.0.2/24 dev net1
-      - cmd: bash -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd3.conf) | base64 -d > /etc/bgpd/bgpd.conf"
+      - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd3.conf) | base64 -d > /etc/bgpd/bgpd.conf"
       - cmd: bgpctl reload
