@@ -2,3 +2,4 @@ bgpctl show rib
 bgpctl show rib ovs valid
 bgpctl show rib avs valid
 bgpctl show rib detail
+bgpctl show rtr
