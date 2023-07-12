@@ -95,7 +95,6 @@ mkdir -p /mnt/volume_ams3_03/repository/ta
 mkdir /mnt/volume_ams3_03/krill-data
 ln -s /mnt/volume_ams3_03/krill-data /var/lib/krill/data
 
-
 rm /etc/nginx/sites-enabled/default
 
 SJ="/CN=krill.example.org"
