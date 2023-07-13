@@ -7,10 +7,11 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 RUN bash /root/.cargo/env
 RUN git clone https://github.com/NLnetLabs/routinator.git
 WORKDIR /routinator
-RUN /root/.cargo/bin/cargo build
+RUN /root/.cargo/bin/cargo build --release --locked --features aspa
 
 WORKDIR /
 ENV PATH="/routinator/target/debug:${PATH}"
+ENV PATH="/routinator/target/release:${PATH}"
 
 
 RUN apt -y install iproute2 iputils-ping net-tools systemctl rsync
