@@ -22,10 +22,11 @@ node_configs:
   - name: ca
     cmds:
       - cmd: ip addr add 10.0.0.1/24 dev net0
-      - cmd: sh -c "echo $(base64 -w 0 krill/krill_regi1.sh) | base64 -d > krill_regi.sh"
+      - cmd: sh -c "echo $(base64 -w 0 krill/built_krill_regi1.sh) | base64 -d > krill_regi.sh"
       - cmd: bash krill_regi.sh
   - name: rp
     cmds:
       - cmd: ip addr add 10.0.0.2/24 dev net0
       - cmd: bash routinator_start1.sh
+      - cmd: sleep 5
       - cmd: /bin/bash -c "nohup routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal --rrdp-root-cert=cert.pem server 1>routinator_output.log 2>&1" &
