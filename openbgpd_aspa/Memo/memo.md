@@ -4,6 +4,10 @@
 ```
 のコミットだと、ASPAの通信をkrillとできた
 
+## 理由
+ASPAのnew verにRoutinatorだけ対応しているため。
+krill ver14になったら、Routinatorも最新にしないといけない。
+
 # ASPAの状態が?になる理由
 R1にて、どれがproviderでどれがcustomerかを設定する必要がある？
 ## show set
