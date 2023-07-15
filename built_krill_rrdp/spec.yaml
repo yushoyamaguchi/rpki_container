@@ -29,5 +29,5 @@ node_configs:
       - cmd: ip addr add 10.0.0.2/24 dev net0
       - cmd: sh -c "echo $(base64 -w 0 routinator/routinator_start1.sh) | base64 -d > routinator_start.sh"
       - cmd: bash routinator_start.sh
-      - cmd: sleep 3
+      - cmd: sleep 4
       - cmd: /bin/bash -c "nohup routinator -vv --no-rir-tals --disable-rsync --extra-tals-dir=/tal --enable-aspa --rrdp-root-cert=cert.pem server 1>routinator_output.log 2>&1" &
