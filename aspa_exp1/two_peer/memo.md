@@ -9,4 +9,7 @@ Lフラグがついているから？
 
 # OpenBGPDのflag
 - A: Anounced 他のASにアナウンスしている
-- L: Local?
+- L: Leaked
+
+# 0725
+なぜLeakedのflagが立っているのか調べる
