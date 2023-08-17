@@ -1,6 +1,6 @@
 nodes:
 - name: ca
-  image: yama_krill_f2:rrdp
+  image: yama_krill_distro:ver1.0
   docker_run_extra_args: --entrypoint bash
   interfaces:
   - { name: net0, type: direct, args: rp#net0 }
@@ -9,7 +9,7 @@ nodes:
   - sysctl: net.ipv6.conf.default.disable_ipv6=0
   - sysctl: net.ipv4.ip_forward=1
 - name: rp
-  image: yama_routinator_f2:rrdp
+  image: yama_routinator_distro:ver1.0
   docker_run_extra_args: --entrypoint bash
   interfaces:
   - { name: net0, type: direct, args: ca#net0 }

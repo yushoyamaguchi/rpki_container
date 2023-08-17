@@ -1,0 +1,11 @@
+nodes:
+- name: rp
+  image: yama_routinator_distro:ver1.0
+  net_base: bridge
+  docker_run_extra_args: --entrypoint bash
+
+node_configs:  
+  - name: rp
+    cmds:
+      - cmd: sh -c "echo $(base64 -w 0 routinator/routinator_start1.sh) | base64 -d > routinator_start.sh"
+      - cmd: bash routinator_start.sh
