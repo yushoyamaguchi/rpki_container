@@ -48,7 +48,7 @@ nodes:
 - name: FakeR4
   image: openbgpd/openbgpd:latest
   interfaces:
-  - { name: net0, type: direct, args: R2#net1 }
+  - { name: net0, type: direct, args: R3#net1 }
   sysctls:
   - sysctl: net.ipv6.conf.all.disable_ipv6=0
   - sysctl: net.ipv6.conf.default.disable_ipv6=0
