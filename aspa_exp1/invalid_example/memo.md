@@ -8,3 +8,7 @@
 
 # メモ
 3の上は5のASPAだけでもinvalidになった
+<br>
+多分、downstreamをinvalidとすることは難しい
+<br>
+RTRサーバと繋がずにaspa-setを指定しても、うまく検証できていないように見えた
