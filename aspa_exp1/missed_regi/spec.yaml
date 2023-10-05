@@ -40,16 +40,16 @@ nodes:
   image: openbgpd/openbgpd:latest
   interfaces:
   - { name: net0, type: direct, args: R2#net1 }
-  - { name: net1, type: direct, args: FakeR4#net0 }
+  - { name: net1, type: direct, args: R4#net0 }
+  - { name: net2, type: direct, args: FakeR5#net0 }
   sysctls:
   - sysctl: net.ipv6.conf.all.disable_ipv6=0
   - sysctl: net.ipv6.conf.default.disable_ipv6=0
   - sysctl: net.ipv4.ip_forward=1    
-- name: FakeR4
+- name: R4
   image: openbgpd/openbgpd:latest
   interfaces:
   - { name: net0, type: direct, args: R3#net1 }
-  - { name: net1, type: direct, args: FakeR5#net0 }
   sysctls:
   - sysctl: net.ipv6.conf.all.disable_ipv6=0
   - sysctl: net.ipv6.conf.default.disable_ipv6=0
@@ -57,7 +57,7 @@ nodes:
 - name: FakeR5
   image: openbgpd/openbgpd:latest
   interfaces:
-  - { name: net0, type: direct, args: FakeR4#net1 }    
+  - { name: net0, type: direct, args: R3#net2 }    
 node_configs:
   - name: ca
     cmds:
@@ -87,13 +87,13 @@ node_configs:
     cmds:
       - cmd: ip addr add 10.2.0.2/24 dev net0
       - cmd: ip addr add 10.3.0.1/24 dev net1
+      - cmd: ip addr add 7.7.7.1/24 dev net2
       - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd3.conf) | base64 -d > /etc/bgpd/bgpd.conf"
       - cmd: bgpctl reload
-  - name: FakeR4
+  - name: R4
     cmds:
       - cmd: ip addr add 10.3.0.2/24 dev net0
-      - cmd: ip addr add 7.7.7.1/24 dev net1
-      - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd_fake4.conf) | base64 -d > /etc/bgpd/bgpd.conf"
+      - cmd: sh -c "echo $(base64 -w 0 openbgpd/bgpd_conf/bgpd4.conf) | base64 -d > /etc/bgpd/bgpd.conf"
       - cmd: bgpctl reload   
   - name: FakeR5
     cmds:
