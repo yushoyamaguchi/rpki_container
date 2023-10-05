@@ -235,3 +235,4 @@ export KRILL_CLI_SERVER=https://localhost:3000/
 #krillc aspas add --aspa "AS65000 => AS65001, AS65002"
 krillc aspas add --aspa "AS65004 => AS65014"
 krillc aspas add --aspa "AS65003 => AS65002"
+krillc aspas add --aspa "AS65002 => AS65010" # If delete this line, invalid route become unknown.
