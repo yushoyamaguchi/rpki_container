@@ -131,6 +131,7 @@ server {
 
   # Maps to the base directory where krill-sync stores RRDP files.
   # /var/lib/krill/data/repo/ こっちにすべきかも...
+  # https://github.com/yushoyamaguchi/rpki_container/commit/b71c1f205f2cf4893a51a3b912e6f74de2d2e14a を参照[間違えやすいところ]
   location /rrdp {
      root /var/lib/krill/data/repo/;
   }
