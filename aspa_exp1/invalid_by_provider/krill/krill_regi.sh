@@ -233,5 +233,6 @@ export KRILL_CLI_TOKEN=yama80
 export KRILL_CLI_MY_CA=testbed
 export KRILL_CLI_SERVER=https://localhost:3000/
 krillc roas update --add "192.168.1.0/24 => 65004"
-krillc aspas add --aspa "AS65002 => AS65001, AS65003"
+krillc aspas add --aspa "AS65002 => AS65001"
 krillc aspas add --aspa "AS65003 => AS65005"
+krillc aspas add --aspa "AS65005 => AS65015"
