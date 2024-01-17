@@ -235,4 +235,5 @@ export KRILL_CLI_SERVER=https://localhost:3000/
 krillc roas update --add "192.168.1.0/24 => 65004"
 krillc aspas add --aspa "AS65002 => AS65001"
 krillc aspas add --aspa "AS65003 => AS65005"
-krillc aspas add --aspa "AS65005 => AS65015"
+#krillc aspas add --aspa "AS65005 => AS65015"
+krillc aspas add --aspa "AS65001 => AS65055"
