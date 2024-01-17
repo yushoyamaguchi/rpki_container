@@ -10,6 +10,6 @@
 # メモ
 3の上は5のASPAだけでもinvalidになった
 <br>
-多分、downstreamをinvalidとすることは難しい
+downstreamをinvalidとならなかったのは、draftを読み間違えてASPAのオブジェクトが不適切なものになっていたため
 <br>
 RTRサーバと繋がずにaspa-setを指定しても、うまく検証できていないように見えた
