@@ -232,6 +232,5 @@ echo "export KRILL_CLI_SERVER=https://localhost:3000/" >>/root/.bashrc
 export KRILL_CLI_TOKEN=yama80
 export KRILL_CLI_MY_CA=testbed
 export KRILL_CLI_SERVER=https://localhost:3000/
-#krillc aspas add --aspa "AS65000 => AS65001, AS65002"
-krillc aspas add --aspa "AS65003 => AS65004"
+krillc aspas add --aspa "AS65003 => AS65004" # missing to register 65002
 krillc aspas add --aspa "AS65002 => AS65001"
